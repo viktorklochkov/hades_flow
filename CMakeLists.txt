@@ -24,12 +24,14 @@ include_directories(
         ${ROOT_INCLUDE_DIRS}
         ${AnalysisTree_INCLUDE_DIR}
         ${Flow_INCLUDE_DIR}
+        ${Flow_INCLUDE_DIR}/../external/include
 )
 
 link_directories(
         ${CMAKE_SOURCE_DIR}
         ${AnalysisTreeBase_LIBRARY_DIR}
         ${Flow_LIBRARY_DIR}
+        ${Flow_INCLUDE_DIR}/../external/lib
 )
 add_definitions(${ROOT_CXX_FLAGS})
 
@@ -38,7 +40,7 @@ set (SOURCES
         )
 
 add_executable(correct src/correct.cc ${SOURCES} )
-target_link_libraries(correct Correction Base FlowCorrect FlowBase AnalysisTreeBase AnalysisTreeInfra ${ROOT_LIBRARIES})
+target_link_libraries(correct QnToolsCorrection QnToolsBase FlowCorrect FlowBase AnalysisTreeBase AnalysisTreeInfra ${ROOT_LIBRARIES})
 
 #add_executable(correlate Correlate.cpp ../correlate/CorrelationTask.cpp ../correlate/Utils.h ../correlate/Functions.h)
 #add_dependencies(correlate ${PROJECT_DEPENDENCIES})
